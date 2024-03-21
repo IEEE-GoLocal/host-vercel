@@ -1,8 +1,5 @@
 # Load libraries
 import flask
-import pandas as pd
-import tensorflow as tf
-import keras
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 
@@ -11,9 +8,7 @@ MAX_LENGTH = 255
 # instantiate flask 
 app = flask.Flask(__name__)
 
-# load the model, and pass in the custom metric function
-global graph
-graph = tf.compat.v1.get_default_graph()
+#This might give warning telling metrics not defined, but its fine because we need model just for predictions and not train/evaluate
 model = load_model('rnn_model.h5')
 
 import re
